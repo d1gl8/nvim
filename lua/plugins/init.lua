@@ -101,87 +101,87 @@ return {
   --     "nvim-telescope/telescope.nvim",
   --   },
   -- },
-  {
-    "nvim-neotest/neotest",
-    event = "VeryLazy",
-    config = function()
-      require("neotest").setup {
-        adapters = {
-          require "neotest-jest" {
-            jestCommand = "npm test --",
-            jestConfigFile = "jest.config.ts",
-            env = { CI = true },
-            cwd = function(path)
-              return vim.fn.getcwd()
-            end,
-          },
-        },
-      }
-    end,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim",
-      "haydenmeade/neotest-jest",
-    },
-  },
-  {
-    "mfussenegger/nvim-dap",
-    config = function()
-      local ok, dap = pcall(require, "dap")
-      if not ok then
-        return
-      end
-      dap.configurations.typescript = {
-        {
-          type = "node2",
-          name = "node attach",
-          request = "attach",
-          program = "${file}",
-          cwd = vim.fn.getcwd(),
-          sourceMaps = true,
-          protocol = "inspector",
-        },
-      }
-      dap.adapters.node2 = {
-        type = "executable",
-        command = "node-debug2-adapter",
-        args = {},
-      }
-    end,
-    dependencies = {
-      "mxsdev/nvim-dap-vscode-js",
-    },
-  },
-  {
-    "rcarriga/nvim-dap-ui",
-    config = function()
-      require("dapui").setup()
+  -- {
+  --   "nvim-neotest/neotest",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("neotest").setup {
+  --       adapters = {
+  --         require "neotest-jest" {
+  --           jestCommand = "npm test --",
+  --           jestConfigFile = "jest.config.ts",
+  --           env = { CI = true },
+  --           cwd = function(path)
+  --             return vim.fn.getcwd()
+  --           end,
+  --         },
+  --       },
+  --     }
+  --   end,
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-treesitter/nvim-treesitter",
+  --     "antoinemadec/FixCursorHold.nvim",
+  --     "haydenmeade/neotest-jest",
+  --   },
+  -- },
+  -- {
+  --   "mfussenegger/nvim-dap",
+  --   config = function()
+  --     local ok, dap = pcall(require, "dap")
+  --     if not ok then
+  --       return
+  --     end
+  --     dap.configurations.typescript = {
+  --       {
+  --         type = "node2",
+  --         name = "node attach",
+  --         request = "attach",
+  --         program = "${file}",
+  --         cwd = vim.fn.getcwd(),
+  --         sourceMaps = true,
+  --         protocol = "inspector",
+  --       },
+  --     }
+  --     dap.adapters.node2 = {
+  --       type = "executable",
+  --       command = "node-debug2-adapter",
+  --       args = {},
+  --     }
+  --   end,
+  --   dependencies = {
+  --     "mxsdev/nvim-dap-vscode-js",
+  --   },
+  -- },
+  -- {
+  --   "rcarriga/nvim-dap-ui",
+  --   config = function()
+  --     require("dapui").setup()
 
-      local dap, dapui = require "dap", require "dapui"
+  --     local dap, dapui = require "dap", require "dapui"
 
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open {}
-      end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close {}
-      end
-      dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close {}
-      end
-    end,
-    dependencies = {
-      "mfussenegger/nvim-dap",
-    },
-  },
-  {
-    "folke/neodev.nvim",
-    config = function()
-      require("neodev").setup {
-        library = { plugins = { "nvim-dap-ui" }, types = true },
-      }
-    end,
-  },
+  --     dap.listeners.after.event_initialized["dapui_config"] = function()
+  --       dapui.open {}
+  --     end
+  --     dap.listeners.before.event_terminated["dapui_config"] = function()
+  --       dapui.close {}
+  --     end
+  --     dap.listeners.before.event_exited["dapui_config"] = function()
+  --       dapui.close {}
+  --     end
+  --   end,
+  --   dependencies = {
+  --     "mfussenegger/nvim-dap",
+  --   },
+  -- },
+  -- {
+  --   "folke/neodev.nvim",
+  --   config = function()
+  --     require("neodev").setup {
+  --       library = { plugins = { "nvim-dap-ui" }, types = true },
+  --     }
+  --   end,
+  -- },
   { "tpope/vim-fugitive" },
   { "rbong/vim-flog", dependencies = {
     "tpope/vim-fugitive",
@@ -211,8 +211,8 @@ return {
       require("todo-comments").setup()
     end,
   }, -- To make a plugin not be loaded
-  {
-    "Exafunction/codeium.vim",
-    lazy = false,
-  },
+--  {
+--    "Exafunction/codeium.vim",
+--    lazy = false,
+--:a  },
 }
